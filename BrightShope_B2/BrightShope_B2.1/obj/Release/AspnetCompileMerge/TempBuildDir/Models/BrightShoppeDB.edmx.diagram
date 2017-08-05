@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb4c18e31c234b94bf19668963d3254d" Name="Diagram1">
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Category" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Customer_Ordering_Setting" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.DefualtImage" Width="1.5" PointX="12.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Expens" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.ExpensesList" Width="1.5" PointX="15" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.InventoryEntry" Width="1.5" PointX="8.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.InventoryEntryList" Width="1.5" PointX="11" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.LogProcess" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Log" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.OrderList" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.OrderTable" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Product" Width="1.5" PointX="10" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.PunchedProduct" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Sale" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.SaleTransaction" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Supplier" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.sysdiagram" Width="1.5" PointX="13.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.Transaction" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.User" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrightShoppeDBModel.UserOrder" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_ExpensesList_Expenses" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_InventoryEntryList_InventoryEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_Logs_LogProcess" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_Logs_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_OrderList_OrderTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_UserOrder_OrderTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_Product_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK__PunchedPr__Punch__0E591826" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_SaleTransaction_Sales" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_SaleTransaction_Transaction" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_Transaction_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BrightShoppeDBModel.FK_UserOrder_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

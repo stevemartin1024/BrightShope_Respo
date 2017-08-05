@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/_AdminLayout.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="AL_navbar">
+        <div class="Al_Logo AL_navbar_container">
+            <div class="AL_Logo">
+                BrightShope
+            </div>  
+            <div class="AL_navbar_control_container pull-right">
+                <ul>
+                    <li><a><span class="glyphicon glyphicon-envelope "></span></a></li>
+                    <li><a><span class="glyphicon glyphicon-bell"></span></a></li>
+                    <li><a><span class="glyphicon glyphicon-cog"></span></a></li>
+                </ul>
+            </div>       
+        </div>
+    </div>
+    <div class="Al_body_container">
+        <div class="Al_sideleft">
+            <div class="user_info_section">
+                <img src="~/Images/IMG_6088 sc.jpg" class="al_img-circle" alt="Cinque Terre" width="100" height="100" style="border:thin solid;">
+                <div class="al_user-name">
+                    Welcome, Steve Martin
+                </div>
+            </div>
+            <div class="side_bar_control">
+                <ul>
+                    <li><a href="~/Admin/Index">Overview</a></li>
+                    <li><a href="#">Cash Manager</a></li>
+                    <li><a href="#">Transaction</a></li>                    
+                    <li><a href="#">Inventory</a></li>
+                    <li><a href="~/Admin_Product/Product">Product</a></li>
+                    <li><a href="~/Admin/Supplier">Supplier</a></li>
+                    <li><a href="#">Sales</a></li>
+                    <li><a href="#">Order</a></li>
+                    <li><a href="#">User</a></li>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    }
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="AL_main_body">
+            @RenderBody()
+            <footer>
+                <p>&copy; @DateTime.Now.Year - brighshope.net application</p>
+            </footer>
+        </div>
+    
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/bootstrap")
+    </div>
+   
+</body>
+</html>

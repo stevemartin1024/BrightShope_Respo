@@ -1,0 +1,81 @@
+﻿@using BrightShope_B2._1.Models;
+@model UserLogin
+
+@{  
+    List<string> role = new List<string>();
+    string Admin = "Admin";
+    string Cashier = "Cashier";
+    string Helper = "Helper";
+    role.Add(Admin);
+    role.Add(Cashier);
+    role.Add(Helper);
+    
+    if (User.Identity.IsAuthenticated)
+    {
+       foreach(string item in role)
+       {
+          bool _gotRole = User.IsInRole(item);
+           if(_gotRole == true)
+           {
+               Response.Redirect("~/" + item + "/Index");
+           }
+           else
+           {
+               
+           }
+       }
+    }   
+  
+}
+@{  
+                 
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+           
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h3>BrightShope</h3>
+                    <p>Enter your username and password to log on:</p>
+                </div>
+                <div>
+                    <i class="fa fa-lock"></i>
+                </div>
+            </div>
+            <div>
+               @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
+               {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label class="sr-only" for="form-username">Username</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-username form-control", @placeholder = "Username...", @type = "text", @name = "form-username" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })    
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="form-password">Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = " form-password form-control", @placeholder = "Password", @name = "form-password", @type = "password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn">Sign in!</button>
+               }   
+            </div>
+        </div>
+    </div>
+    
+
+
+        </div>
+    </div>
+
+</div>
+

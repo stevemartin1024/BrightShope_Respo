@@ -1,0 +1,132 @@
+﻿body {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #efefef;
+}
+
+.AL_navbar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0%;
+    margin-top: 0px;
+    background-color: #18303d;
+    z-index:1000;
+}
+
+.AL_navbar_container {
+    margin: auto;
+    width: 1300px;
+}
+
+.Al_body_container {
+    margin: auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 1300px;
+}
+
+
+.Al_sideleft {
+    position: fixed;
+    top: 55px;
+    background-color:white;
+    border-radius: 5px;
+    font-size: 105%;
+    float: left;
+    width: 260px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    clear: left;
+}
+
+
+.user_info_section {
+    padding-top:20px;
+    margin-top:0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: thin solid;
+    border-bottom-color: lightgray;
+    color: #ffffff;
+    background-color: #39b3d7;
+    border-color: #269abc;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.side_bar_control
+{
+
+    
+}
+
+.al_img-circle {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 200%;
+}
+
+.al_user-name {
+    width: 180px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+}
+
+.AL_navbar_control_container {
+    margin-top: 15px;
+}
+
+    .AL_navbar_control_container ul li {
+        display: inline;
+    }
+
+        .AL_navbar_control_container ul li a {
+            text-decoration: none;
+            font-family: Arial;
+            padding: 15px 10px;
+            font-size: 15px;
+            color: #edf2f9;
+            clear: right;
+            margin-top: 20px;
+        }
+
+.AL_Logo {
+    font-size: 20px;
+    float: left;
+    width: 200px;
+    margin: 10px;
+    clear: left;
+    color: #edf2f9;
+}
+
+.AL_main_body {
+    background-color: #efefef;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 250px;
+    margin-right: -20px;
+    height: 100%;
+    padding: 20px;
+    font-size: 110%;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 300px;
+    min-width: 300px;
+}
+
+
+.max150 {
+    max-width: 70px;
+}

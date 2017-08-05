@@ -1,0 +1,137 @@
+﻿@model BrightShope_B2._1.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "CreatNewProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/custom_supplier.css" rel="stylesheet" />
+<div class="supp_main">
+    <h2>New Supplier</h2>
+    <hr />
+
+    <div style="width:400px">
+        <form id="_CreateUpdateProd_Form" style="padding-bottom:5px;">
+            <div class="form-group">
+                <label for="txtProd_Code">Product Code</label>
+                @Html.TextBoxFor(model => model.ProductCode, new { @id = "txtProd_Code", @class = "form-control", @placeholder = "Product Code",})
+                @Html.ValidationMessageFor(model => model.ProductCode, "")
+                <div id="_ProdExist" class="field-validation-error" style="display:none;"><span>Product Code already used</span></div>
+            </div>
+            <div class="form-group">
+                <label for="txtProd_Code">Product Name</label>
+                @Html.TextBoxFor(model => model.ProdName, new { @id = "txtProd_Name", @class = "form-control", @placeholder = "Product Name", })
+                @Html.ValidationMessageFor(model => model.ProdName, "")
+            </div>
+
+            <div class="form-group">
+                <label for="txtProd_Code">Brand</label>
+                @Html.TextBoxFor(model => model.ProductBrand, new { @id = "txtProd_Brand", @class = "form-control", @placeholder = "Product Brand" })
+            </div>
+            <div class="form-group">
+                <label for="txtProd_Code">Description</label>
+                @Html.TextAreaFor(model => model.Description, new { @id = "txtProd_Description", @class = "form-control", @placeholder = "Description" })
+            </div>
+
+            <div class="form-group">
+                <label for="txtProd_Code">Product Category</label>
+                @Html.DropDownListFor(model => model.ProdCategory, ViewBag.CategoryList as SelectList, "Select Product Category", new { @Id = "ddlProd_Category", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProdCategory, "", new { @class = "field-validation-error" })
+            </div>
+
+            <div class="form-group">
+                <label for="txtProd_Code">Supplier</label>
+                @Html.DropDownListFor(model => model.ProdSuppID, ViewBag.SupplierList as SelectList, "Select Product Supplier", new { @Id = "ddlProd_Supplier", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProdSuppID, "", new { @class = "field-validation-error" })
+            </div>
+         
+       
+            <div class="form-group">
+                <label for="txtProd_Code">Supplier Price</label>
+                <div class="input-group">
+                    <span class="input-group-addon">₱</span>
+                    @Html.TextBoxFor(model => model.ProdPrice, new { @id = "txtProd_SuppPrice", @class = "form-control", @placeholder = "Supplier Price" })
+                </div>            
+                @Html.ValidationMessageFor(model => model.ProdPrice, "", new { @class = "field-validation-error" })
+            </div>
+            <div class="form-group">
+                <label for="txtProd_Code">Selling Price</label>
+                <div class="input-group">
+                    <span class="input-group-addon">₱</span>
+                    @Html.TextBoxFor(model => model.ProdSellingPrice, new { @id = "txtProd_SellPrice", @class = "form-control", @placeholder = "Selling Price" })
+                </div>              
+                @Html.ValidationMessageFor(model => model.ProdSellingPrice, "", new { @class = "field-validation-error" })
+            </div>
+
+            <div class="form-group">
+                <label for="txtProd_Code">Product Weight</label>
+                @Html.TextBoxFor(model => model.ProdUnitWght, new { @id = "txtProd_Weight", @class = "form-control", @placeholder = "Supplier Weight" })
+            </div>
+         
+         
+            <a class="btn btn-primary" id="btn_Submit_NewEditProduct">Submit <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        </form>
+    </div>
+
+    <div style="position:absolute; top:29.5%; left:70%; width:300px; height:200px;">
+        <div>
+            <div class="btn btn-primary">
+                <input type="file" id="imageBrowes" />
+            </div>
+        </div>
+        <hr />
+        <div>
+            <div>
+                <div id="imgPreview" class="thumbnail" style="display:none;">
+                    <img class="img-responsive" id="targetImg" style="height:150px; width:150px;" />
+                    <div class="caption">
+                        <a href="#" class="btn btn-primary" onclick="clearPreview()"><span class="glyphicon glyphicon-trash"></span></a>
+                        <p id="description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="divLoader">Loading&#8230;</div>
+
+    <div id="uploadedImage" style="height:200px; width:200px;">
+       
+    </div>
+
+
+    <div class="modal fade" id="myModal_del" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #FF9900;color:white;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="_AddEdit_FormTitle_Confirmation" class="modal-title">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    Please enter you password to proceed
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <span>Password</span>
+                        <input type="password" id="txtDelSupplier" />
+                        <div id="InvalidPass" class="field-validation-error" style="display:none; left:160px;top:-20px;"><span>Incorrect Password</span></div>
+                    </div>
+                    <button type="button" id="btn_AddConfirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                    <button type="button" id="btn_cancel" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts
+{
+
+<script src="~/Scripts/Custom_CreateNewProduct.js"></script>
+
+}

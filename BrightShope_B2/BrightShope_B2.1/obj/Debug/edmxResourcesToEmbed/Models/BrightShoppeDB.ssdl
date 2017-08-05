@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BrightShoppeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryType" Type="nvarchar" MaxLength="30" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Customer_Ordering_Setting">
+    <Key>
+      <PropertyRef Name="Customer_Setting_No" />
+    </Key>
+    <Property Name="Customer_Setting_No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Item" Type="int" />
+    <Property Name="Qnty_Item" Type="int" />
+    <Property Name="No_CancelHRS" Type="int" />
+  </EntityType>
+  <EntityType Name="DefualtImage">
+    <Key>
+      <PropertyRef Name="DefProdImageCode" />
+    </Key>
+    <Property Name="DefProdImageCode" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DefProdImage" Type="varbinary(max)" Nullable="false" />
+    <Property Name="DefImageCategory" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Expenses">
+    <Key>
+      <PropertyRef Name="ExpensesCode" />
+    </Key>
+    <Property Name="ExpensesCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ExpensesTotalAmount" Type="money" />
+    <Property Name="ExpensesDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ExpensesList">
+    <Key>
+      <PropertyRef Name="ExpensesCode" />
+    </Key>
+    <Property Name="ExpensesCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ExpensesDescription" Type="text" />
+    <Property Name="ExpensesSubAmount" Type="money" />
+    <Property Name="ExpensesTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="InventoryEntry">
+    <Key>
+      <PropertyRef Name="EntryCode" />
+    </Key>
+    <Property Name="EntryCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Date" Type="nvarchar" MaxLength="15" />
+    <Property Name="Time" Type="nvarchar" MaxLength="15" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="InventoryEntryList">
+    <Key>
+      <PropertyRef Name="InventryListCode" />
+    </Key>
+    <Property Name="InventryListCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntryCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="ProdName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OnlineStock" Type="int" />
+    <Property Name="StoreStock" Type="int" />
+    <Property Name="PurchasePrice" Type="nchar" MaxLength="10" />
+    <Property Name="TotalStock" Type="int" />
+    <Property Name="StockTotalAmnt" Type="money" />
+    <Property Name="DaysToBeDlvd" Type="smallint" />
+  </EntityType>
+  <EntityType Name="LogProcess">
+    <Key>
+      <PropertyRef Name="ProcessID" />
+    </Key>
+    <Property Name="ProcessID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProcessValue" Type="text" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProcessID" Type="nvarchar" MaxLength="100" />
+    <Property Name="value1" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateTime" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderList">
+    <Key>
+      <PropertyRef Name="OrderListID" />
+    </Key>
+    <Property Name="OrderListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderCode" Type="int" />
+    <Property Name="OrderProdCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="OrderProdName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="SubTotalPrice" Type="money" />
+  </EntityType>
+  <EntityType Name="OrderTable">
+    <Key>
+      <PropertyRef Name="OrderCode" />
+    </Key>
+    <Property Name="OrderCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTotal" Type="money" />
+    <Property Name="Date" Type="nvarchar" MaxLength="30" />
+    <Property Name="Time" Type="nvarchar" MaxLength="30" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProdName" Type="nvarchar" MaxLength="30" />
+    <Property Name="ProductBrand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProdCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProdPrice" Type="money" />
+    <Property Name="ProdSellingPrice" Type="money" />
+    <Property Name="OnlineShopStock" Type="int" />
+    <Property Name="StoreStock" Type="int" />
+    <Property Name="ProdUnitWght" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProdSuppID" Type="nvarchar" MaxLength="30" />
+    <Property Name="ProdStatus" Type="nvarchar" MaxLength="15" />
+    <Property Name="ProdReOrderLvl" Type="int" />
+    <Property Name="ReserveStock" Type="int" />
+    <Property Name="ProdAvgUsage" Type="float" />
+    <Property Name="TotalAmnt" Type="money" />
+    <Property Name="TotalStock" Type="int" />
+    <Property Name="ProdLastDateDvrd" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProdCreateDate" Type="nvarchar" MaxLength="20" />
+    <Property Name="Total_Lead_inDays" Type="int" />
+    <Property Name="ProductImage" Type="varbinary(max)" />
+    <Property Name="No_Delivery" Type="smallint" />
+    <Property Name="Sold_Qnty" Type="int" />
+    <Property Name="ProdAvgUsage_Online" Type="float" />
+    <Property Name="Sold_Qnty_Online" Type="int" />
+  </EntityType>
+  <EntityType Name="PunchedProduct">
+    <Key>
+      <PropertyRef Name="Customer_PunchCode_ID" />
+    </Key>
+    <Property Name="Customer_PunchCode_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PunchedTransCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PunchProdCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="PunchProdName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PunchProdQnty" Type="smallint" />
+    <Property Name="SubTotalPrice" Type="money" />
+    <Property Name="PunchProdStatus" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="SalesCode" />
+    </Key>
+    <Property Name="SalesCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SalesDateTime" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="SaleTransaction">
+    <Key>
+      <PropertyRef Name="Sale_Transac_Code" />
+    </Key>
+    <Property Name="Sale_Transac_Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="TransactionCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SuppName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SuppAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="SuppCity/Prov" Type="nvarchar" MaxLength="50" />
+    <Property Name="SuppContact#" Type="nvarchar" MaxLength="30" />
+    <Property Name="SuppEmail" Type="nvarchar" MaxLength="80" />
+    <Property Name="SuppRemarks" Type="nvarchar" MaxLength="300" />
+    <Property Name="SuppStatus" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransCode" />
+    </Key>
+    <Property Name="TransCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TransEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="TransDateTime" Type="nvarchar" MaxLength="30" />
+    <Property Name="TransTotalPrice" Type="money" />
+    <Property Name="TransCash" Type="money" />
+    <Property Name="TransChange" Type="money" />
+    <Property Name="TransNo.Item" Type="tinyint" />
+    <Property Name="TransStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="Trans_Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Trans_Order" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Level" Type="nvarchar" MaxLength="30" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="30" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="City/Province" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserPhoto" Type="varbinary(max)" />
+    <Property Name="Active" Type="nvarchar" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="20" />
+    <Property Name="UserPoints" Type="bigint" />
+    <Property Name="Success_Order" Type="int" />
+    <Property Name="Unread_Notification" Type="tinyint" />
+    <Property Name="Unread_Message" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="UserOrder">
+    <Key>
+      <PropertyRef Name="UserOrderID" />
+    </Key>
+    <Property Name="UserOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderCode" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__PunchedPr__Punch__0E591826">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="PunchedProduct" Type="Self.PunchedProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="TransCode" />
+      </Principal>
+      <Dependent Role="PunchedProduct">
+        <PropertyRef Name="PunchedTransCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpensesList_Expenses">
+    <End Role="Expenses" Type="Self.Expenses" Multiplicity="1" />
+    <End Role="ExpensesList" Type="Self.ExpensesList" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Expenses">
+        <PropertyRef Name="ExpensesCode" />
+      </Principal>
+      <Dependent Role="ExpensesList">
+        <PropertyRef Name="ExpensesCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventoryEntryList_InventoryEntry">
+    <End Role="InventoryEntry" Type="Self.InventoryEntry" Multiplicity="0..1" />
+    <End Role="InventoryEntryList" Type="Self.InventoryEntryList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InventoryEntry">
+        <PropertyRef Name="EntryCode" />
+      </Principal>
+      <Dependent Role="InventoryEntryList">
+        <PropertyRef Name="EntryCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_LogProcess">
+    <End Role="LogProcess" Type="Self.LogProcess" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogProcess">
+        <PropertyRef Name="ProcessID" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="ProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderList_OrderTable">
+    <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="0..1" />
+    <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderTable">
+        <PropertyRef Name="OrderCode" />
+      </Principal>
+      <Dependent Role="OrderList">
+        <PropertyRef Name="OrderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProdSuppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleTransaction_Sales">
+    <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+    <End Role="SaleTransaction" Type="Self.SaleTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sales">
+        <PropertyRef Name="SalesCode" />
+      </Principal>
+      <Dependent Role="SaleTransaction">
+        <PropertyRef Name="SalesCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleTransaction_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="SaleTransaction" Type="Self.SaleTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="TransCode" />
+      </Principal>
+      <Dependent Role="SaleTransaction">
+        <PropertyRef Name="TransactionCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TransEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrder_OrderTable">
+    <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="1" />
+    <End Role="UserOrder" Type="Self.UserOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderTable">
+        <PropertyRef Name="OrderCode" />
+      </Principal>
+      <Dependent Role="UserOrder">
+        <PropertyRef Name="OrderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrder_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserOrder" Type="Self.UserOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="UserOrder">
+        <PropertyRef Name="UserEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BrightShoppeDBModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_Ordering_Setting" EntityType="Self.Customer_Ordering_Setting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefualtImage" EntityType="Self.DefualtImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpensesList" EntityType="Self.ExpensesList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InventoryEntry" EntityType="Self.InventoryEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InventoryEntryList" EntityType="Self.InventoryEntryList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogProcess" EntityType="Self.LogProcess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderList" EntityType="Self.OrderList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderTable" EntityType="Self.OrderTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PunchedProduct" EntityType="Self.PunchedProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SaleTransaction" EntityType="Self.SaleTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserOrder" EntityType="Self.UserOrder" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__PunchedPr__Punch__0E591826" Association="Self.FK__PunchedPr__Punch__0E591826">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="PunchedProduct" EntitySet="PunchedProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpensesList_Expenses" Association="Self.FK_ExpensesList_Expenses">
+      <End Role="Expenses" EntitySet="Expenses" />
+      <End Role="ExpensesList" EntitySet="ExpensesList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventoryEntryList_InventoryEntry" Association="Self.FK_InventoryEntryList_InventoryEntry">
+      <End Role="InventoryEntry" EntitySet="InventoryEntry" />
+      <End Role="InventoryEntryList" EntitySet="InventoryEntryList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_LogProcess" Association="Self.FK_Logs_LogProcess">
+      <End Role="LogProcess" EntitySet="LogProcess" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_User" Association="Self.FK_Logs_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderList_OrderTable" Association="Self.FK_OrderList_OrderTable">
+      <End Role="OrderTable" EntitySet="OrderTable" />
+      <End Role="OrderList" EntitySet="OrderList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleTransaction_Sales" Association="Self.FK_SaleTransaction_Sales">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="SaleTransaction" EntitySet="SaleTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleTransaction_Transaction" Association="Self.FK_SaleTransaction_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="SaleTransaction" EntitySet="SaleTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrder_OrderTable" Association="Self.FK_UserOrder_OrderTable">
+      <End Role="OrderTable" EntitySet="OrderTable" />
+      <End Role="UserOrder" EntitySet="UserOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrder_User" Association="Self.FK_UserOrder_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserOrder" EntitySet="UserOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

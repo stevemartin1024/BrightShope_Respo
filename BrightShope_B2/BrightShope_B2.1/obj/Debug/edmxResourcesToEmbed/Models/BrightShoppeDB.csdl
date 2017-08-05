@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BrightShoppeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer_Ordering_Setting">
+    <Key>
+      <PropertyRef Name="Customer_Setting_No" />
+    </Key>
+    <Property Name="Customer_Setting_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="No_Item" Type="Int32" />
+    <Property Name="Qnty_Item" Type="Int32" />
+    <Property Name="No_CancelHRS" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DefualtImage">
+    <Key>
+      <PropertyRef Name="DefProdImageCode" />
+    </Key>
+    <Property Name="DefProdImageCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DefProdImage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="DefImageCategory" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Expens">
+    <Key>
+      <PropertyRef Name="ExpensesCode" />
+    </Key>
+    <Property Name="ExpensesCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpensesTotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ExpensesDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ExpensesList" Relationship="Self.FK_ExpensesList_Expenses" FromRole="Expenses" ToRole="ExpensesList" />
+  </EntityType>
+  <EntityType Name="ExpensesList">
+    <Key>
+      <PropertyRef Name="ExpensesCode" />
+    </Key>
+    <Property Name="ExpensesCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpensesDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExpensesSubAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ExpensesTime" Type="Time" Precision="7" />
+    <NavigationProperty Name="Expens" Relationship="Self.FK_ExpensesList_Expenses" FromRole="ExpensesList" ToRole="Expenses" />
+  </EntityType>
+  <EntityType Name="InventoryEntry">
+    <Key>
+      <PropertyRef Name="EntryCode" />
+    </Key>
+    <Property Name="EntryCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="InventoryEntryLists" Relationship="Self.FK_InventoryEntryList_InventoryEntry" FromRole="InventoryEntry" ToRole="InventoryEntryList" />
+  </EntityType>
+  <EntityType Name="InventoryEntryList">
+    <Key>
+      <PropertyRef Name="InventryListCode" />
+    </Key>
+    <Property Name="InventryListCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntryCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnlineStock" Type="Int32" />
+    <Property Name="StoreStock" Type="Int32" />
+    <Property Name="PurchasePrice" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TotalStock" Type="Int32" />
+    <Property Name="StockTotalAmnt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DaysToBeDlvd" Type="Int16" />
+    <NavigationProperty Name="InventoryEntry" Relationship="Self.FK_InventoryEntryList_InventoryEntry" FromRole="InventoryEntryList" ToRole="InventoryEntry" />
+  </EntityType>
+  <EntityType Name="LogProcess">
+    <Key>
+      <PropertyRef Name="ProcessID" />
+    </Key>
+    <Property Name="ProcessID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProcessValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_LogProcess" FromRole="LogProcess" ToRole="Logs" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProcessID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="value1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LogProcess" Relationship="Self.FK_Logs_LogProcess" FromRole="Logs" ToRole="LogProcess" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Logs_User" FromRole="Logs" ToRole="User" />
+    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrderList">
+    <Key>
+      <PropertyRef Name="OrderListID" />
+    </Key>
+    <Property Name="OrderListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCode" Type="Int32" />
+    <Property Name="OrderProdCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="OrderProdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="SubTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="OrderTable" Relationship="Self.FK_OrderList_OrderTable" FromRole="OrderList" ToRole="OrderTable" />
+  </EntityType>
+  <EntityType Name="OrderTable">
+    <Key>
+      <PropertyRef Name="OrderCode" />
+    </Key>
+    <Property Name="OrderCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Date" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderLists" Relationship="Self.FK_OrderList_OrderTable" FromRole="OrderTable" ToRole="OrderList" />
+    <NavigationProperty Name="UserOrders" Relationship="Self.FK_UserOrder_OrderTable" FromRole="OrderTable" ToRole="UserOrder" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProdName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProductBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProdCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProdPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ProdSellingPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OnlineShopStock" Type="Int32" />
+    <Property Name="StoreStock" Type="Int32" />
+    <Property Name="ProdUnitWght" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ProdSuppID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProdStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ProdReOrderLvl" Type="Int32" />
+    <Property Name="ReserveStock" Type="Int32" />
+    <Property Name="ProdAvgUsage" Type="Double" />
+    <Property Name="TotalAmnt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalStock" Type="Int32" />
+    <Property Name="ProdLastDateDvrd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ProdCreateDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Lead_inDays" Type="Int32" />
+    <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="No_Delivery" Type="Int16" />
+    <Property Name="Sold_Qnty" Type="Int32" />
+    <Property Name="ProdAvgUsage_Online" Type="Double" />
+    <Property Name="Sold_Qnty_Online" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="PunchedProduct">
+    <Key>
+      <PropertyRef Name="Customer_PunchCode_ID" />
+    </Key>
+    <Property Name="Customer_PunchCode_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PunchedTransCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PunchProdCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PunchProdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PunchProdQnty" Type="Int16" />
+    <Property Name="SubTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PunchProdStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK__PunchedPr__Punch__0E591826" FromRole="PunchedProduct" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="SalesCode" />
+    </Key>
+    <Property Name="SalesCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SalesDateTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SaleTransactions" Relationship="Self.FK_SaleTransaction_Sales" FromRole="Sales" ToRole="SaleTransaction" />
+  </EntityType>
+  <EntityType Name="SaleTransaction">
+    <Key>
+      <PropertyRef Name="Sale_Transac_Code" />
+    </Key>
+    <Property Name="Sale_Transac_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK_SaleTransaction_Sales" FromRole="SaleTransaction" ToRole="Sales" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_SaleTransaction_Transaction" FromRole="SaleTransaction" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SuppName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SuppAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SuppCity_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SuppContact_" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SuppEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="SuppRemarks" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SuppStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransCode" />
+    </Key>
+    <Property Name="TransCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TransEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransDateTime" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TransTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TransCash" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TransChange" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TransNo_Item" Type="Byte" />
+    <Property Name="TransStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Trans_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Trans_Order" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PunchedProducts" Relationship="Self.FK__PunchedPr__Punch__0E591826" FromRole="Transaction" ToRole="PunchedProduct" />
+    <NavigationProperty Name="SaleTransactions" Relationship="Self.FK_SaleTransaction_Transaction" FromRole="Transaction" ToRole="SaleTransaction" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Level" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="City_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Active" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserPoints" Type="Int64" />
+    <Property Name="Success_Order" Type="Int32" />
+    <Property Name="Unread_Notification" Type="Byte" />
+    <Property Name="Unread_Message" Type="Byte" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_User" FromRole="User" ToRole="Logs" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_User" FromRole="User" ToRole="Transaction" />
+    <NavigationProperty Name="UserOrders" Relationship="Self.FK_UserOrder_User" FromRole="User" ToRole="UserOrder" />
+  </EntityType>
+  <EntityType Name="UserOrder">
+    <Key>
+      <PropertyRef Name="UserOrderID" />
+    </Key>
+    <Property Name="UserOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderTable" Relationship="Self.FK_UserOrder_OrderTable" FromRole="UserOrder" ToRole="OrderTable" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserOrder_User" FromRole="UserOrder" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpensesList_Expenses">
+    <End Role="Expenses" Type="Self.Expens" Multiplicity="1" />
+    <End Role="ExpensesList" Type="Self.ExpensesList" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Expenses">
+        <PropertyRef Name="ExpensesCode" />
+      </Principal>
+      <Dependent Role="ExpensesList">
+        <PropertyRef Name="ExpensesCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventoryEntryList_InventoryEntry">
+    <End Role="InventoryEntry" Type="Self.InventoryEntry" Multiplicity="0..1" />
+    <End Role="InventoryEntryList" Type="Self.InventoryEntryList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InventoryEntry">
+        <PropertyRef Name="EntryCode" />
+      </Principal>
+      <Dependent Role="InventoryEntryList">
+        <PropertyRef Name="EntryCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_LogProcess">
+    <End Role="LogProcess" Type="Self.LogProcess" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogProcess">
+        <PropertyRef Name="ProcessID" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="ProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderList_OrderTable">
+    <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="0..1" />
+    <End Role="OrderList" Type="Self.OrderList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderTable">
+        <PropertyRef Name="OrderCode" />
+      </Principal>
+      <Dependent Role="OrderList">
+        <PropertyRef Name="OrderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrder_OrderTable">
+    <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="1" />
+    <End Role="UserOrder" Type="Self.UserOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderTable">
+        <PropertyRef Name="OrderCode" />
+      </Principal>
+      <Dependent Role="UserOrder">
+        <PropertyRef Name="OrderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProdSuppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PunchedPr__Punch__0E591826">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="PunchedProduct" Type="Self.PunchedProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="TransCode" />
+      </Principal>
+      <Dependent Role="PunchedProduct">
+        <PropertyRef Name="PunchedTransCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleTransaction_Sales">
+    <End Role="Sales" Type="Self.Sale" Multiplicity="0..1" />
+    <End Role="SaleTransaction" Type="Self.SaleTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sales">
+        <PropertyRef Name="SalesCode" />
+      </Principal>
+      <Dependent Role="SaleTransaction">
+        <PropertyRef Name="SalesCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleTransaction_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="SaleTransaction" Type="Self.SaleTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="TransCode" />
+      </Principal>
+      <Dependent Role="SaleTransaction">
+        <PropertyRef Name="TransactionCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TransEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrder_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserOrder" Type="Self.UserOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="UserOrder">
+        <PropertyRef Name="UserEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BrightShoppeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customer_Ordering_Setting" EntityType="Self.Customer_Ordering_Setting" />
+    <EntitySet Name="DefualtImages" EntityType="Self.DefualtImage" />
+    <EntitySet Name="Expenses" EntityType="Self.Expens" />
+    <EntitySet Name="ExpensesLists" EntityType="Self.ExpensesList" />
+    <EntitySet Name="InventoryEntries" EntityType="Self.InventoryEntry" />
+    <EntitySet Name="InventoryEntryLists" EntityType="Self.InventoryEntryList" />
+    <EntitySet Name="LogProcesses" EntityType="Self.LogProcess" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="OrderLists" EntityType="Self.OrderList" />
+    <EntitySet Name="OrderTables" EntityType="Self.OrderTable" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="PunchedProducts" EntityType="Self.PunchedProduct" />
+    <EntitySet Name="Sales" EntityType="Self.Sale" />
+    <EntitySet Name="SaleTransactions" EntityType="Self.SaleTransaction" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserOrders" EntityType="Self.UserOrder" />
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpensesList_Expenses" Association="Self.FK_ExpensesList_Expenses">
+      <End Role="Expenses" EntitySet="Expenses" />
+      <End Role="ExpensesList" EntitySet="ExpensesLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventoryEntryList_InventoryEntry" Association="Self.FK_InventoryEntryList_InventoryEntry">
+      <End Role="InventoryEntry" EntitySet="InventoryEntries" />
+      <End Role="InventoryEntryList" EntitySet="InventoryEntryLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_LogProcess" Association="Self.FK_Logs_LogProcess">
+      <End Role="LogProcess" EntitySet="LogProcesses" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_User" Association="Self.FK_Logs_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderList_OrderTable" Association="Self.FK_OrderList_OrderTable">
+      <End Role="OrderTable" EntitySet="OrderTables" />
+      <End Role="OrderList" EntitySet="OrderLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrder_OrderTable" Association="Self.FK_UserOrder_OrderTable">
+      <End Role="OrderTable" EntitySet="OrderTables" />
+      <End Role="UserOrder" EntitySet="UserOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PunchedPr__Punch__0E591826" Association="Self.FK__PunchedPr__Punch__0E591826">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="PunchedProduct" EntitySet="PunchedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleTransaction_Sales" Association="Self.FK_SaleTransaction_Sales">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="SaleTransaction" EntitySet="SaleTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleTransaction_Transaction" Association="Self.FK_SaleTransaction_Transaction">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="SaleTransaction" EntitySet="SaleTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrder_User" Association="Self.FK_UserOrder_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserOrder" EntitySet="UserOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

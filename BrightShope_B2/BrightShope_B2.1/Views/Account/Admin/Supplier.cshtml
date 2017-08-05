@@ -1,0 +1,86 @@
+﻿@model BrightShope_B2._1.Models.supplierViewModel
+
+    @{ ViewBag.Title = "Supplier";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    <link href="~/Content/custom_supplier.css" rel="stylesheet" />
+
+    <div class="supp_main" style="background-color: white;">
+        <div>
+            <input type="button" id="btnNewSuplier" value="New" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" />
+        </div>
+        <div class="input-group supp_search" style="max-width:300px;">
+            <input type="text" id="txtSearchSupplier" class="form-control" placeholder="Search Supplier's" aria-describedby="basic-addon2">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="supp_main">
+        @ViewBag.suppid
+        <table class="table table-striped table-bordered">
+            <thead style="background-color: #FF9900; color:white; ">
+                <tr style="border-bottom:none;">
+                    <th>SupplierID</th>
+                    <th style="max-width: 300px; min-width: 300px;">Supplier Name </th>
+                    <th> Supplier Contact</th>
+                    <th style="max-width: 300px; min-width: 300px;"> Supplier Email</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_supplierData">
+               
+                 
+            </tbody>
+        </table>
+
+    </div>
+
+    
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #FF9900;color:white;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>New Supplier</b></h4>
+                </div>
+                <div class="modal-body">
+               
+                    <form id="_newSupplierForm">
+                        @Html.TextBoxFor(model => model.SupplierID, new { @id = "genSuppID", @for = "disabledSelect", @class = "form-control" })
+                        @Html.TextBoxFor(model => model.SuppName, new { @name = "txtSuppName", @class = "form-control", @placeholder = "Supplier Name" })
+                        @Html.ValidationMessageFor(model => model.SuppName, "")
+                        @Html.TextBoxFor(model => model.SuppAddress, new { @name = "txtSuppAddress", @class = "form-control", @placeholder = "Supplier Address" })
+                        @Html.ValidationMessageFor(model => model.SuppAddress, "")
+                        @Html.TextBoxFor(model => model.SuppCity_Prov, new { @name = "txtSuppCity_Prov", @class = "form-control", @placeholder = "Supplier City/Province" })
+                        @Html.ValidationMessageFor(model => model.SuppCity_Prov, "")
+                        @Html.TextBoxFor(model => model.SuppContact_, new { @name = "txtContact", @class = "form-control", @placeholder = "Supplier Contact" })
+                        @Html.ValidationMessageFor(model => model.SuppContact_, "")
+                        @Html.TextBoxFor(model => model.SuppEmail, new { @name = "txtEmail", @class = "form-control", @placeholder = "Supplier Email" })
+                        @Html.ValidationMessageFor(model => model.SuppEmail, "")
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <text id="lblErrorPassword" class="hide" style="color:red;" name="password">Error Message</text>
+                        <span>Password</span>
+                        <input type="password" id="txtPassword"/>
+                    </div>
+                    <button type="button" id="btn_submitNewSupplier" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                    <button type="button" id="btn_submitNewClose" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts
+{
+<script src="~/Scripts/custom_supplier.js"></script>
+}
+  
+
+
+

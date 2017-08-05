@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BrightShoppeDBModelStoreContainer" CdmEntityContainer="BrightShoppeDBEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Ordering_Setting">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Customer_Ordering_Setting">
+        <MappingFragment StoreEntitySet="Customer_Ordering_Setting">
+          <ScalarProperty Name="Customer_Setting_No" ColumnName="Customer_Setting_No" />
+          <ScalarProperty Name="No_Item" ColumnName="No_Item" />
+          <ScalarProperty Name="Qnty_Item" ColumnName="Qnty_Item" />
+          <ScalarProperty Name="No_CancelHRS" ColumnName="No_CancelHRS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DefualtImages">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.DefualtImage">
+        <MappingFragment StoreEntitySet="DefualtImage">
+          <ScalarProperty Name="DefProdImageCode" ColumnName="DefProdImageCode" />
+          <ScalarProperty Name="DefProdImage" ColumnName="DefProdImage" />
+          <ScalarProperty Name="DefImageCategory" ColumnName="DefImageCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Expens">
+        <MappingFragment StoreEntitySet="Expenses">
+          <ScalarProperty Name="ExpensesCode" ColumnName="ExpensesCode" />
+          <ScalarProperty Name="ExpensesTotalAmount" ColumnName="ExpensesTotalAmount" />
+          <ScalarProperty Name="ExpensesDate" ColumnName="ExpensesDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpensesLists">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.ExpensesList">
+        <MappingFragment StoreEntitySet="ExpensesList">
+          <ScalarProperty Name="ExpensesCode" ColumnName="ExpensesCode" />
+          <ScalarProperty Name="ExpensesDescription" ColumnName="ExpensesDescription" />
+          <ScalarProperty Name="ExpensesSubAmount" ColumnName="ExpensesSubAmount" />
+          <ScalarProperty Name="ExpensesTime" ColumnName="ExpensesTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryEntries">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.InventoryEntry">
+        <MappingFragment StoreEntitySet="InventoryEntry">
+          <ScalarProperty Name="EntryCode" ColumnName="EntryCode" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryEntryLists">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.InventoryEntryList">
+        <MappingFragment StoreEntitySet="InventoryEntryList">
+          <ScalarProperty Name="InventryListCode" ColumnName="InventryListCode" />
+          <ScalarProperty Name="EntryCode" ColumnName="EntryCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+          <ScalarProperty Name="OnlineStock" ColumnName="OnlineStock" />
+          <ScalarProperty Name="StoreStock" ColumnName="StoreStock" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="TotalStock" ColumnName="TotalStock" />
+          <ScalarProperty Name="StockTotalAmnt" ColumnName="StockTotalAmnt" />
+          <ScalarProperty Name="DaysToBeDlvd" ColumnName="DaysToBeDlvd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogProcesses">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.LogProcess">
+        <MappingFragment StoreEntitySet="LogProcess">
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="ProcessValue" ColumnName="ProcessValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Log">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="value1" ColumnName="value1" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLists">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.OrderList">
+        <MappingFragment StoreEntitySet="OrderList">
+          <ScalarProperty Name="OrderListID" ColumnName="OrderListID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="OrderProdCode" ColumnName="OrderProdCode" />
+          <ScalarProperty Name="OrderProdName" ColumnName="OrderProdName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="SubTotalPrice" ColumnName="SubTotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderTables">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.OrderTable">
+        <MappingFragment StoreEntitySet="OrderTable">
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProdName" ColumnName="ProdName" />
+          <ScalarProperty Name="ProductBrand" ColumnName="ProductBrand" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProdCategory" ColumnName="ProdCategory" />
+          <ScalarProperty Name="ProdPrice" ColumnName="ProdPrice" />
+          <ScalarProperty Name="ProdSellingPrice" ColumnName="ProdSellingPrice" />
+          <ScalarProperty Name="OnlineShopStock" ColumnName="OnlineShopStock" />
+          <ScalarProperty Name="StoreStock" ColumnName="StoreStock" />
+          <ScalarProperty Name="ProdUnitWght" ColumnName="ProdUnitWght" />
+          <ScalarProperty Name="ProdSuppID" ColumnName="ProdSuppID" />
+          <ScalarProperty Name="ProdStatus" ColumnName="ProdStatus" />
+          <ScalarProperty Name="ProdReOrderLvl" ColumnName="ProdReOrderLvl" />
+          <ScalarProperty Name="ReserveStock" ColumnName="ReserveStock" />
+          <ScalarProperty Name="ProdAvgUsage" ColumnName="ProdAvgUsage" />
+          <ScalarProperty Name="TotalAmnt" ColumnName="TotalAmnt" />
+          <ScalarProperty Name="TotalStock" ColumnName="TotalStock" />
+          <ScalarProperty Name="ProdLastDateDvrd" ColumnName="ProdLastDateDvrd" />
+          <ScalarProperty Name="ProdCreateDate" ColumnName="ProdCreateDate" />
+          <ScalarProperty Name="Total_Lead_inDays" ColumnName="Total_Lead_inDays" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="No_Delivery" ColumnName="No_Delivery" />
+          <ScalarProperty Name="Sold_Qnty" ColumnName="Sold_Qnty" />
+          <ScalarProperty Name="ProdAvgUsage_Online" ColumnName="ProdAvgUsage_Online" />
+          <ScalarProperty Name="Sold_Qnty_Online" ColumnName="Sold_Qnty_Online" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PunchedProducts">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.PunchedProduct">
+        <MappingFragment StoreEntitySet="PunchedProduct">
+          <ScalarProperty Name="Customer_PunchCode_ID" ColumnName="Customer_PunchCode_ID" />
+          <ScalarProperty Name="PunchedTransCode" ColumnName="PunchedTransCode" />
+          <ScalarProperty Name="PunchProdCode" ColumnName="PunchProdCode" />
+          <ScalarProperty Name="PunchProdName" ColumnName="PunchProdName" />
+          <ScalarProperty Name="PunchProdQnty" ColumnName="PunchProdQnty" />
+          <ScalarProperty Name="SubTotalPrice" ColumnName="SubTotalPrice" />
+          <ScalarProperty Name="PunchProdStatus" ColumnName="PunchProdStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Sale">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+          <ScalarProperty Name="SalesDateTime" ColumnName="SalesDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleTransactions">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.SaleTransaction">
+        <MappingFragment StoreEntitySet="SaleTransaction">
+          <ScalarProperty Name="Sale_Transac_Code" ColumnName="Sale_Transac_Code" />
+          <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="SuppName" ColumnName="SuppName" />
+          <ScalarProperty Name="SuppAddress" ColumnName="SuppAddress" />
+          <ScalarProperty Name="SuppCity_Prov" ColumnName="SuppCity/Prov" />
+          <ScalarProperty Name="SuppContact_" ColumnName="SuppContact#" />
+          <ScalarProperty Name="SuppEmail" ColumnName="SuppEmail" />
+          <ScalarProperty Name="SuppRemarks" ColumnName="SuppRemarks" />
+          <ScalarProperty Name="SuppStatus" ColumnName="SuppStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="TransCode" ColumnName="TransCode" />
+          <ScalarProperty Name="TransEmail" ColumnName="TransEmail" />
+          <ScalarProperty Name="TransDateTime" ColumnName="TransDateTime" />
+          <ScalarProperty Name="TransTotalPrice" ColumnName="TransTotalPrice" />
+          <ScalarProperty Name="TransCash" ColumnName="TransCash" />
+          <ScalarProperty Name="TransChange" ColumnName="TransChange" />
+          <ScalarProperty Name="TransNo_Item" ColumnName="TransNo.Item" />
+          <ScalarProperty Name="TransStatus" ColumnName="TransStatus" />
+          <ScalarProperty Name="Trans_Type" ColumnName="Trans_Type" />
+          <ScalarProperty Name="Trans_Order" ColumnName="Trans_Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City_Province" ColumnName="City/Province" />
+          <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserPoints" ColumnName="UserPoints" />
+          <ScalarProperty Name="Success_Order" ColumnName="Success_Order" />
+          <ScalarProperty Name="Unread_Notification" ColumnName="Unread_Notification" />
+          <ScalarProperty Name="Unread_Message" ColumnName="Unread_Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserOrders">
+      <EntityTypeMapping TypeName="BrightShoppeDBModel.UserOrder">
+        <MappingFragment StoreEntitySet="UserOrder">
+          <ScalarProperty Name="UserOrderID" ColumnName="UserOrderID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
